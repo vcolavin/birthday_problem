@@ -15,7 +15,7 @@ function submitClick(event) {
   }
   else if (numberOfDays && numberOfPeople) {
     probability = calculateProbability(numberOfPeople, numberOfDays)
-    displayString = probabilityString(probability)
+    displayString = buildDisplayString(probability)
   }
   else {
     displayString = "please input something!"
@@ -44,7 +44,7 @@ function calculateProbability(n, d) {
 }
 
 // perform some close-to-one checking
-function probabilityString(probability) {
+function buildDisplayString(probability) {
   if (("" + probability) === "1") {
     return "Probability two people share a birthday: hella close to 1"
   }
