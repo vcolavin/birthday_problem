@@ -24,12 +24,12 @@ function calculateProbability(n, d) {
   var numerator = math.factorial(math.bignumber(d))
 
   var denominator = (
-    math.factorial(math.bignumber(d-n)) * (math.pow(d, n))
+    // note: the docs say "multiply", not "times"
+    math.factorial(math.bignumber(d-n)).times(math.pow(d, n))
   )
 
-  var q = ( numerator / denominator )
+  var q = math.divide(numerator, denominator)
+  var p = math.subtract(1, q)
 
-  debugger
-
-  return 1 - q;
+  return p
 }
