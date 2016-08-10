@@ -10,7 +10,7 @@ function submitClick(event) {
 
   var displayString = ""
 
-  if (numberOfPeople >= numberOfDays) {
+  if (numberOfPeople > numberOfDays) {
     displayString = "Probability two people share a birthday: 1"
   }
   else if (numberOfDays && numberOfPeople) {
