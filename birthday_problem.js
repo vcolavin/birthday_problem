@@ -5,31 +5,50 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function submitClick(event) {
   event.preventDefault()
-  var numberOfPeople = document.getElementById('number-of-people').value
-  var numberOfDays = document.getElementById('days-in-year').value
+  var numberOfPeople = parseInt(document.getElementById('number-of-people').value)
+  var numberOfDays = parseInt(document.getElementById('days-in-year').value)
 
-  var probability = calculateProbability(numberOfPeople, numberOfDays);
+  var displayString = ""
 
-  if (numberOfDays && numberOfPeople) {
-    document.getElementById('answer').style.display = 'block'
-    document.getElementById('percent').innerHTML = probability
+  if (numberOfPeople >= numberOfDays) {
+    displayString = "Probability two people share a birthday: 1"
   }
+  else if (numberOfDays && numberOfPeople) {
+    probability = calculateProbability(numberOfPeople, numberOfDays)
+    displayString = probabilityString(probability)
+  }
+  else {
+    displayString = "please input something!"
+  }
+
+  document.getElementById('answer').style.display = 'block'
+  document.getElementById('answer').innerHTML = displayString
 }
 
 // source:
 // http://mathworld.wolfram.com/BirthdayProblem.html
-// essentially P(people, days) = 1 - (d!/((d-n)!) * d^n)
+// essentially, P(people, days) = 1 - (d!/((d-n)!) * d^n)
 function calculateProbability(n, d) {
 
   var numerator = math.factorial(math.bignumber(d))
 
   var denominator = (
     // note: the docs say "multiply", not "times"
-    math.factorial(math.bignumber(d-n)).times(math.pow(d, n))
+    math.factorial(math.bignumber(d - n)).times(math.pow(d, n))
   )
 
   var q = math.divide(numerator, denominator)
   var p = math.subtract(1, q)
 
-  return p
+  return math.round(p, 100)
+}
+
+// perform some close-to-one checking
+function probabilityString(probability) {
+  if (("" + probability) === "1") {
+    return "Probability two people share a birthday: hella close to 1"
+  }
+  else {
+    return "Probability two people share a birthday: " + probability
+  }
 }

@@ -6,17 +6,14 @@
   <h1>Birthday Problem</h1>
   <form>
     <label>Days in the year:</label>
-    <input type="number" id="days-in-year" value="365">
+    <input type="number" id="days-in-year" value="365" min="1">
     <label>Number of people:</label>
-    <input type="number" id="number-of-people" value="20">
+    <input type="number" id="number-of-people" value="20" min="1">
     <button id="submit">figure it out!</button>
   </form>
 
-  <div id="answer" style="display: none">
-    <p>
-      probability people share birthdays: <span id="percent">0</span>%.
-    </p>
-  </div>
+  <p id="answer" style="display: none">
+  </p>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.4.1/math.min.js"></script>
   <script src="./birthday_problem.js"></script>
