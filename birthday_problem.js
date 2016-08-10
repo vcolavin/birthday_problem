@@ -19,10 +19,9 @@ function calculateProbability(days, people) {
 }
 
 // http://stackoverflow.com/questions/3959211/fast-factorial-function-in-javascript
-function factorial(num)
-{
-    var rval = 1;
-    for (var i = 2; i <= num; i++)
-        rval = rval * i;
-    return rval;
+function factorial(num) {
+  var rval = 1;
+  for (var i = 2; i <= num; i++)
+    rval = rval * i;
+  return rval;
 }
