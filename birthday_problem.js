@@ -1,16 +1,14 @@
-// source for the math
-// http://mathworld.wolfram.com/BirthdayProblem.html
-
 document.addEventListener('DOMContentLoaded', function(){
+  math.config({precision: 2000});
   document.getElementById('submit').onclick = submitClick;
 });
 
 function submitClick(event) {
   event.preventDefault()
-  var numberOfDays = document.getElementById('days-in-year').value
   var numberOfPeople = document.getElementById('number-of-people').value
+  var numberOfDays = document.getElementById('days-in-year').value
 
-  var probability = calculateProbability(numberOfDays, numberOfPeople);
+  var probability = calculateProbability(numberOfPeople, numberOfDays);
 
   if (numberOfDays && numberOfPeople) {
     document.getElementById('answer').style.display = 'block'
@@ -18,14 +16,20 @@ function submitClick(event) {
   }
 }
 
-function calculateProbability(days, people) {
-  return 6;
-}
+// source:
+// http://mathworld.wolfram.com/BirthdayProblem.html
+// essentially P(people, days) = 1 - (d!/((d-n)!) * d^n)
+function calculateProbability(n, d) {
 
-// http://stackoverflow.com/questions/3959211/fast-factorial-function-in-javascript
-function factorial(num) {
-  var rval = 1;
-  for (var i = 2; i <= num; i++)
-    rval = rval * i;
-  return rval;
+  var numerator = math.factorial(math.bignumber(d))
+
+  var denominator = (
+    math.factorial(math.bignumber(d-n)) * (math.pow(d, n))
+  )
+
+  var q = ( numerator / denominator )
+
+  debugger
+
+  return 1 - q;
 }
