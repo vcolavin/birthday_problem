@@ -42,7 +42,6 @@ function calculateProbability(n, d) {
   return math.round(p, 100)
 }
 
-// perform some close-to-one checking
 function buildDisplayString(probability) {
   return "Probability two people share a birthday: " + probability
 }
