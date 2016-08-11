@@ -9,17 +9,16 @@ function submitClick(event) {
   var numberOfDays = parseInt(document.getElementById('days-in-year').value)
 
   var displayString = ""
+  var probability = 0
 
   if (numberOfPeople > numberOfDays) {
-    displayString = "Probability two people share a birthday: 1"
+    probability = 1
   }
   else if (numberOfDays && numberOfPeople) {
     probability = calculateProbability(numberOfPeople, numberOfDays)
-    displayString = buildDisplayString(probability)
   }
-  else {
-    displayString = "please input something!"
-  }
+
+  displayString = buildDisplayString(probability)
 
   document.getElementById('answer').style.display = 'block'
   document.getElementById('answer').innerHTML = displayString
@@ -45,10 +44,5 @@ function calculateProbability(n, d) {
 
 // perform some close-to-one checking
 function buildDisplayString(probability) {
-  if (("" + probability) === "1") {
-    return "Probability two people share a birthday: hella close to 1"
-  }
-  else {
-    return "Probability two people share a birthday: " + probability
-  }
+  return "Probability two people share a birthday: " + probability
 }
