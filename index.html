@@ -1,0 +1,22 @@
+<html>
+<head>
+  <title>el birthday problem</title>
+</head>
+<body>
+  <h1>Birthday Problem</h1>
+  <form>
+    <label>Days in the year:</label>
+    <input type="number" id="days-in-year" value="365" min="1">
+    <label>Number of people:</label>
+    <input type="number" id="number-of-people" value="20" min="1">
+    <button id="submit-precise" value="precise">Calculate precisely (takes longer)</button>
+    <button id="submit-approx" value="approximate">Calculate approximately</button>
+  </form>
+
+  <p id="answer" style="display: none">
+  </p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.4.1/math.min.js"></script>
+  <script src="./birthday_problem.js"></script>
+</body>
+</html>
